@@ -15,6 +15,10 @@ export function PlatformSection() {
       icon: Camera,
       title: "HairPrint Capture",
       subtitle: "Calibrated home or assisted recording",
+      colorClass: "from-white to-teal-50/40 border-teal-200/80 hover:border-teal-400",
+      iconBg: "bg-teal-100 text-teal-800",
+      pillBg: "bg-teal-100 text-teal-900 border-teal-300",
+      bulletColor: "bg-teal-600",
       points: [
         "Kit includes a printed calibration band, colour reference card and hair-sample envelope.",
         "Guided phone capture records the hair and scalp via standard mobile browser.",
@@ -29,6 +33,10 @@ export function PlatformSection() {
       icon: Layers,
       title: "Scalp Model & Custom Cap",
       subtitle: "Individualised anatomical base design",
+      colorClass: "from-white to-indigo-50/40 border-indigo-200/80 hover:border-indigo-400",
+      iconBg: "bg-indigo-100 text-indigo-800",
+      pillBg: "bg-indigo-100 text-indigo-900 border-indigo-300",
+      bulletColor: "bg-indigo-600",
       points: [
         "Captured geometry directly supports a digital 3D scalp model.",
         "Cap design precisely mirrors the individual’s unique scalp contours.",
@@ -42,6 +50,10 @@ export function PlatformSection() {
       icon: CheckCircle,
       title: "Preview & Approval",
       subtitle: "Interactive design review and confirmation",
+      colorClass: "from-white to-amber-50/40 border-amber-200/80 hover:border-amber-400",
+      iconBg: "bg-amber-100 text-amber-800",
+      pillBg: "bg-amber-100 text-amber-900 border-amber-300",
+      bulletColor: "bg-amber-600",
       points: [
         "Customer reviews an interactive rendered digital design preview.",
         "Clear explanation of expected fitting timeline provided before approval.",
@@ -53,6 +65,10 @@ export function PlatformSection() {
       icon: FileSpreadsheet,
       title: "Workshop Build Package",
       subtitle: "Precision artisan manufacturing instructions",
+      colorClass: "from-white to-rose-50/40 border-rose-200/80 hover:border-rose-400",
+      iconBg: "bg-rose-100 text-rose-800",
+      pillBg: "bg-rose-100 text-rose-900 border-rose-300",
+      bulletColor: "bg-rose-600",
       points: [
         "Versioned digital cap design specification files.",
         "Segmented hair-density mapping across crown, temples and nape.",
@@ -67,6 +83,10 @@ export function PlatformSection() {
       icon: HeartHandshake,
       title: "Fitting & CrownCare",
       subtitle: "Local comfort check-in and lifetime continuity",
+      colorClass: "from-white to-emerald-50/40 border-emerald-200/80 hover:border-emerald-400",
+      iconBg: "bg-emerald-100 text-emerald-800",
+      pillBg: "bg-emerald-100 text-emerald-900 border-emerald-300",
+      bulletColor: "bg-emerald-600",
       points: [
         "Professional fitting in the comfort of home or at an accredited partner salon.",
         "Structured comfort follow-up conducted two weeks post-fitting.",
@@ -80,6 +100,10 @@ export function PlatformSection() {
       icon: Lock,
       title: "Consent & Controlled Data Access",
       subtitle: "Strict privacy safeguards and record segregation",
+      colorClass: "from-white to-purple-50/40 border-purple-200/80 hover:border-purple-400",
+      iconBg: "bg-purple-100 text-purple-800",
+      pillBg: "bg-purple-100 text-purple-900 border-purple-300",
+      bulletColor: "bg-purple-600",
       points: [
         "Planned architectural separation of personal identity from health and design files.",
         "Manufacturing workshops receive only necessary build parameters under an order number.",
@@ -94,7 +118,7 @@ export function PlatformSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-champagne-100 text-champagne-800 border border-champagne-300">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-900 border border-purple-300 shadow-sm">
             Intended Platform Architecture
           </div>
           <h2 className="mt-3 text-3xl sm:text-4xl lg:text-[42px] font-serif font-bold text-plum-950 tracking-tight leading-[1.18]">
@@ -105,21 +129,21 @@ export function PlatformSection() {
           </p>
         </div>
 
-        {/* 6 Feature Groups Grid */}
+        {/* 6 Feature Groups Grid with colourful distinct styling */}
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {featureGroups.map((group) => {
             const Icon = group.icon;
             return (
               <div
                 key={group.group}
-                className="p-8 rounded-3xl bg-white/90 backdrop-blur-xl border border-sage-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5 flex flex-col justify-between"
+                className={`p-8 rounded-3xl bg-gradient-to-br ${group.colorClass} border shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 rounded-2xl bg-ivory-100 text-plum-900 border border-sage-200/60 shadow-sm">
+                    <div className={`p-3 rounded-2xl ${group.iconBg} shadow-sm`}>
                       <Icon className="w-5 h-5" aria-hidden="true" />
                     </div>
-                    <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-champagne-100 text-champagne-800 border border-champagne-200">
+                    <span className={`text-xs font-mono font-bold px-3 py-1 rounded-full ${group.pillBg} shadow-sm`}>
                       Phase {group.group}
                     </span>
                   </div>
@@ -133,15 +157,15 @@ export function PlatformSection() {
 
                   <ul className="space-y-3">
                     {group.points.map((pt, i) => (
-                      <li key={i} className="text-xs sm:text-sm text-plum-700 flex items-start gap-2.5 leading-relaxed">
-                        <span className="w-1.5 h-1.5 rounded-full bg-sage-500 shrink-0 mt-2" aria-hidden="true" />
+                      <li key={i} className="text-xs sm:text-sm text-plum-800 flex items-start gap-2.5 leading-relaxed">
+                        <span className={`w-1.5 h-1.5 rounded-full ${group.bulletColor} shrink-0 mt-2`} aria-hidden="true" />
                         <span>{pt}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-sage-100 text-[11px] text-plum-500 font-medium">
+                <div className="mt-6 pt-4 border-t border-black/5 text-[11px] text-plum-500 font-medium">
                   Planned service capability
                 </div>
               </div>

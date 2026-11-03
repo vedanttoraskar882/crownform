@@ -60,23 +60,23 @@ export function Header({ onOpenPilotModal }) {
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#FAF8F5]/90 backdrop-blur-xl border-b border-sage-200/80 shadow-soft py-3.5'
-          : 'bg-[#FAF8F5]/70 backdrop-blur-md border-b border-transparent py-5'
+          ? 'bg-white/85 backdrop-blur-xl border-b border-emerald-100/80 shadow-soft py-3.5'
+          : 'bg-transparent border-b border-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Wordmark (Clean - without "In development") */}
+          {/* Brand Wordmark */}
           <div className="flex items-center">
             <a
               href="#home"
-              className="group flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-plum-800 rounded-lg py-0.5 px-1"
+              className="group flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-700 rounded-lg py-0.5 px-1"
               aria-label="CrownForm Home"
             >
-              <span className="text-2xl sm:text-[26px] font-serif font-bold tracking-tight text-plum-950 group-hover:text-plum-700 transition-colors">
+              <span className="text-2xl sm:text-[26px] font-serif font-bold tracking-tight text-plum-950 group-hover:text-emerald-900 transition-colors">
                 CrownForm
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-champagne-500 mb-2 opacity-90 group-hover:scale-125 transition-transform" />
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mb-2 opacity-90 group-hover:scale-125 transition-transform" />
             </a>
           </div>
 
@@ -86,22 +86,22 @@ export function Header({ onOpenPilotModal }) {
               <a
                 key={link.label}
                 href={link.href}
-                className="px-3.5 py-1.5 text-sm font-medium text-plum-800 hover:text-plum-950 hover:bg-white/70 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-plum-800"
+                className="px-3.5 py-1.5 text-sm font-medium text-plum-800 hover:text-emerald-950 hover:bg-emerald-50/80 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-emerald-700"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Desktop Action CTA */}
+          {/* Desktop Action CTA with gradient and hover lift */}
           <div className="hidden lg:flex items-center gap-4">
             <button
               type="button"
               onClick={(e) => onOpenPilotModal(e.currentTarget)}
-              className="relative inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-plum-950 text-white text-sm font-semibold hover:bg-plum-850 active:scale-[0.98] transition-all shadow-sm hover:shadow-card hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-plum-900"
+              className="relative inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-plum-950 via-plum-900 to-plum-950 text-white text-sm font-semibold hover:from-plum-900 hover:to-plum-800 active:scale-[0.98] transition-all shadow-sm hover:shadow-glow-plum hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-plum-900"
             >
               <span>Request a Pilot</span>
-              <ArrowUpRight className="w-4 h-4 text-champagne-300" />
+              <ArrowUpRight className="w-4 h-4 text-amber-300" />
             </button>
           </div>
 
@@ -118,7 +118,7 @@ export function Header({ onOpenPilotModal }) {
               ref={toggleButtonRef}
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-xl text-plum-900 hover:bg-sage-100 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800"
+              className="p-2 rounded-xl text-plum-900 hover:bg-emerald-50 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-700"
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu-drawer"
               aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -129,15 +129,15 @@ export function Header({ onOpenPilotModal }) {
         </div>
       </div>
 
-      {/* Mobile Drawer (Clean - without "In development") */}
+      {/* Mobile Drawer */}
       {isMobileMenuOpen && (
         <div
           id="mobile-menu-drawer"
           ref={mobileMenuRef}
-          className="lg:hidden fixed inset-x-0 top-[69px] bg-[#FAF8F5]/98 backdrop-blur-2xl border-b border-sage-200 shadow-modal px-6 py-6 space-y-4 animate-in slide-in-from-top-3 duration-200"
+          className="lg:hidden fixed inset-x-0 top-[69px] bg-white/98 backdrop-blur-2xl border-b border-emerald-100 shadow-modal px-6 py-6 space-y-4 animate-in slide-in-from-top-3 duration-200"
         >
-          <div className="pb-2 border-b border-sage-200/60">
-            <span className="text-[11px] uppercase tracking-wider font-semibold text-plum-500">
+          <div className="pb-2 border-b border-emerald-100">
+            <span className="text-[11px] uppercase tracking-wider font-semibold text-emerald-800">
               Navigation
             </span>
           </div>
@@ -147,23 +147,23 @@ export function Header({ onOpenPilotModal }) {
                 key={link.label}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-base font-medium text-plum-900 hover:text-plum-700 hover:bg-sage-50 rounded-xl px-3 py-2.5 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800"
+                className="text-base font-medium text-plum-900 hover:text-emerald-900 hover:bg-emerald-50 rounded-xl px-3 py-2.5 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-700"
               >
                 {link.label}
               </a>
             ))}
           </nav>
-          <div className="pt-2 border-t border-sage-200/60">
+          <div className="pt-2 border-t border-emerald-100">
             <button
               type="button"
               onClick={(e) => {
                 setIsMobileMenuOpen(false);
                 onOpenPilotModal(e.currentTarget);
               }}
-              className="w-full py-3 rounded-full bg-plum-950 text-white text-sm font-semibold hover:bg-plum-850 transition-colors text-center shadow-sm flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-full bg-gradient-to-r from-plum-950 to-plum-900 text-white text-sm font-semibold hover:from-plum-900 hover:to-plum-800 transition-colors text-center shadow-sm flex items-center justify-center gap-2"
             >
               <span>Request a Pilot</span>
-              <ArrowUpRight className="w-4 h-4 text-champagne-300" />
+              <ArrowUpRight className="w-4 h-4 text-amber-300" />
             </button>
           </div>
         </div>

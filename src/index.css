@@ -25,17 +25,17 @@
   }
 
   body {
-    background-color: #FAF7F2;
+    background-color: #F8F6F2;
     color: #1F141F;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     letter-spacing: -0.01em;
-    /* Sophisticated atmospheric multi-stop ambient background */
+    /* Multi-hued ambient background: soft gold, fresh sage, subtle berry glow */
     background-image: 
-      radial-gradient(at 12% 8%, rgba(226, 208, 170, 0.28) 0px, transparent 45%),
-      radial-gradient(at 88% 12%, rgba(200, 218, 198, 0.32) 0px, transparent 50%),
-      radial-gradient(at 50% 45%, rgba(238, 228, 210, 0.22) 0px, transparent 60%),
-      radial-gradient(at 15% 75%, rgba(205, 222, 203, 0.25) 0px, transparent 50%),
-      radial-gradient(at 85% 85%, rgba(230, 215, 185, 0.25) 0px, transparent 50%);
+      radial-gradient(at 10% 8%, rgba(225, 200, 150, 0.30) 0px, transparent 45%),
+      radial-gradient(at 90% 12%, rgba(160, 210, 185, 0.32) 0px, transparent 50%),
+      radial-gradient(at 48% 38%, rgba(215, 190, 225, 0.22) 0px, transparent 55%),
+      radial-gradient(at 12% 70%, rgba(175, 215, 190, 0.28) 0px, transparent 50%),
+      radial-gradient(at 88% 80%, rgba(235, 195, 160, 0.26) 0px, transparent 50%);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -52,26 +52,27 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: #F8F6F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D6E2D5;
+  background: #B7D1B5;
   border-radius: 9999px;
-  border: 2px solid #FAF7F2;
+  border: 2px solid #F8F6F2;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B7CBB6;
+  background: #8EBF8A;
 }
 
 /* Glassmorphic luxury panel */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.90);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(214, 226, 213, 0.75);
 }
 
-/* Warm subtle noise / grid accent */
-.bg-subtle-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(244, 239, 226, 0.6) 0%, rgba(250, 247, 242, 0) 70%);
+/* Subtle gradient text utility */
+.text-gradient-plum {
+  background: linear-gradient(135deg, #1F141F 0%, #4D264A 60%, #7E3B68 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
