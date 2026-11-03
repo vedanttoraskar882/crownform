@@ -80,7 +80,7 @@ export function Footer({ onOpenPilotModal, onOpenPrivacyModal }) {
           </div>
         </div>
 
-        {/* Clean Bottom Bar (Without "In development" or "Development-stage business") */}
+        {/* Clean Bottom Bar */}
         <div className="mt-14 pt-8 border-t border-plum-900/80 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-plum-400">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <span>
@@ -93,7 +93,7 @@ export function Footer({ onOpenPilotModal, onOpenPrivacyModal }) {
               className="inline-flex items-center gap-1.5 text-champagne-300 hover:text-champagne-200 underline underline-offset-4 font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-champagne-300 rounded"
             >
               <ShieldCheck className="w-3.5 h-3.5" />
-              Demo Privacy Disclosure
+              Privacy &amp; Data Disclosure
             </button>
           </div>
 

@@ -158,7 +158,7 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
         organisationName: trimmedOrg
       });
 
-      setSuccessMessage('Your pilot interest has been saved in this browser. This demo does not send your details to CrownForm.');
+      setSuccessMessage('Your pilot interest has been saved in this browser on this device.');
       setFormData({
         fullName: '',
         phoneNumber: '',

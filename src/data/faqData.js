@@ -32,7 +32,7 @@ export const faqs = [
   {
     id: "payment-schedule",
     question: "When would I pay?",
-    answer: "Under the planned terms, there is no financial commitment beyond the initial kit fee prior to design preview approval. Once you review and approve your personalised 3D preview and agree to the delivery timeline, a 50% deposit is taken, with the remaining balance due upon completion and dispatch for fitting. Please note that no real payments are taken on this demonstration website."
+    answer: "Under the planned terms, there is no financial commitment beyond the initial kit fee prior to design preview approval. Once you review and approve your personalised 3D preview and agree to the delivery timeline, a 50% deposit is taken, with the remaining balance due upon completion and dispatch for fitting. Please note that no online payments are collected on this website."
   },
   {
     id: "kit-fee-credit",
@@ -57,7 +57,7 @@ export const faqs = [
   {
     id: "data-handling",
     question: "How will HairPrint data be handled?",
-    answer: "Under the planned architecture, personal identity records are strictly segregated from biometric and design data. Manufacturing workshops receive only anonymised build specifications under an order number—never names, personal photos, or clinical notes. Customers will have the planned right to download or request deletion of their data. This landing-page demonstration does not collect or process scans, health files or photographs."
+    answer: "Under the planned architecture, personal identity records are strictly segregated from biometric and design data. Manufacturing workshops receive only anonymised build specifications under an order number—never names, personal photos, or clinical notes. Customers will have the planned right to download or request deletion of their data. This website does not collect or process scans, health files or photographs."
   },
   {
     id: "pilot-submission-privacy",

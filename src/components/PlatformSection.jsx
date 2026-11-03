@@ -5,9 +5,7 @@ import {
   CheckCircle,
   FileSpreadsheet,
   HeartHandshake,
-  Lock,
-  Calendar,
-  AlertCircle
+  Lock
 } from 'lucide-react';
 
 export function PlatformSection() {
@@ -91,36 +89,8 @@ export function PlatformSection() {
     }
   ];
 
-  const plannedLaterCapabilities = [
-    {
-      timeline: "Month 15",
-      title: "Studio Licensing Programme",
-      description: "Independent wig salons and studios access CrownForm capture kits and digital specifications while preserving client relationships."
-    },
-    {
-      timeline: "Month 25",
-      title: "NHS Voucher Supply",
-      description: "Planned patient access via NHS voucher allowances, subject to official approved-supplier accreditation and regional arrangements."
-    },
-    {
-      timeline: "Month 27",
-      title: "Clinician & Nurse Portal",
-      description: "Dedicated portal for cancer care teams and dermatologists, subject to requisite clinical safety and verification work."
-    },
-    {
-      timeline: "Month 32",
-      title: "Native Android Application",
-      description: "Dedicated native mobile app complementing the initial browser-based guided capture system."
-    },
-    {
-      timeline: "Ongoing",
-      title: "Advanced Research Tracks",
-      description: "Further design rule automation, historical photograph scalp reconstruction, and comfort-learning algorithms."
-    }
-  ];
-
   return (
-    <section id="platform" className="py-20 md:py-28 bg-[#FAF8F5]">
+    <section id="platform" className="py-20 md:py-28 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl">
@@ -142,7 +112,7 @@ export function PlatformSection() {
             return (
               <div
                 key={group.group}
-                className="p-8 rounded-3xl bg-white border border-sage-200/80 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5 flex flex-col justify-between"
+                className="p-8 rounded-3xl bg-white/90 backdrop-blur-xl border border-sage-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
@@ -177,43 +147,6 @@ export function PlatformSection() {
               </div>
             );
           })}
-        </div>
-
-        {/* Planned Later Capabilities Panel */}
-        <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-plum-950 via-plum-900 to-plum-950 text-white shadow-soft-lg border border-plum-800/80">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-plum-800/90 text-champagne-200 border border-plum-700">
-              <Calendar className="w-3.5 h-3.5" />
-              <span>Roadmap Overview</span>
-            </div>
-            <h3 className="mt-3 text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
-              Planned Later Capabilities
-            </h3>
-            <p className="mt-2 text-xs sm:text-sm text-plum-200 leading-relaxed">
-              Timelines indicate operating milestones from the CrownForm business plan starting from operational launch, not confirmed calendar dates. Initial product uses browser-based capture.
-            </p>
-          </div>
-
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {plannedLaterCapabilities.map((item, idx) => (
-              <div key={idx} className="p-5 rounded-2xl bg-plum-900/50 border border-plum-800 backdrop-blur-sm">
-                <span className="inline-block px-2.5 py-0.5 rounded-md text-xs font-semibold bg-champagne-500/20 text-champagne-300 border border-champagne-400/30 mb-2">
-                  {item.timeline}
-                </span>
-                <h4 className="text-base font-semibold text-white">
-                  {item.title}
-                </h4>
-                <p className="mt-2 text-xs text-plum-200/90 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 pt-5 border-t border-plum-800/80 flex items-center gap-2 text-xs text-plum-300">
-            <AlertCircle className="w-4 h-4 text-champagne-300 shrink-0" />
-            <span>Browser-based guided phone capture is part of the initial launch offering; a native Android application is scheduled for Month 32.</span>
-          </div>
         </div>
       </div>
     </section>
