@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 export function Header({ onOpenPilotModal }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -7,16 +7,10 @@ export function Header({ onOpenPilotModal }) {
   const mobileMenuRef = useRef(null);
   const toggleButtonRef = useRef(null);
 
-  // Monitor scroll state for styling
   useEffect(() => {
     function handleScroll() {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     }
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -62,72 +56,69 @@ export function Header({ onOpenPilotModal }) {
     { label: 'FAQ', href: '#faq' }
   ];
 
-  function handleNavLinkClick() {
-    setIsMobileMenuOpen(false);
-  }
-
   return (
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#FAF8F5]/90 backdrop-blur-md border-b border-sage-200/70 shadow-soft py-3'
-          : 'bg-[#FAF8F5] border-b border-transparent py-4'
+          ? 'bg-[#FAF8F5]/90 backdrop-blur-xl border-b border-sage-200/80 shadow-soft py-3.5'
+          : 'bg-[#FAF8F5]/70 backdrop-blur-md border-b border-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Wordmark & In development label */}
-          <div className="flex items-center gap-3">
+          {/* Brand Wordmark (Clean - without "In development") */}
+          <div className="flex items-center">
             <a
               href="#home"
-              className="text-2xl font-serif font-bold tracking-tight text-plum-950 hover:text-plum-700 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800 rounded-lg px-1 py-0.5"
+              className="group flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-plum-800 rounded-lg py-0.5 px-1"
               aria-label="CrownForm Home"
             >
-              CrownForm
+              <span className="text-2xl sm:text-[26px] font-serif font-bold tracking-tight text-plum-950 group-hover:text-plum-700 transition-colors">
+                CrownForm
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-champagne-500 mb-2 opacity-90 group-hover:scale-125 transition-transform" />
             </a>
-            <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-sage-100 text-sage-800 border border-sage-200">
-              In development
-            </span>
           </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Main Navigation">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-plum-800 hover:text-plum-950 hover:underline decoration-sage-300 underline-offset-8 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800 rounded-md px-1 py-0.5"
+                className="px-3.5 py-1.5 text-sm font-medium text-plum-800 hover:text-plum-950 hover:bg-white/70 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-plum-800"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Header Action Button (Desktop) */}
+          {/* Desktop Action CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <button
               type="button"
               onClick={(e) => onOpenPilotModal(e.currentTarget)}
-              className="px-5 py-2.5 rounded-full bg-plum-900 text-white text-sm font-semibold hover:bg-plum-800 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-plum-900"
+              className="relative inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-plum-950 text-white text-sm font-semibold hover:bg-plum-850 active:scale-[0.98] transition-all shadow-sm hover:shadow-card hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-plum-900"
             >
-              Request a Pilot
+              <span>Request a Pilot</span>
+              <ArrowUpRight className="w-4 h-4 text-champagne-300" />
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 lg:hidden">
+          {/* Mobile Actions */}
+          <div className="flex items-center gap-2.5 lg:hidden">
             <button
               type="button"
               onClick={(e) => onOpenPilotModal(e.currentTarget)}
-              className="px-3.5 py-1.5 rounded-full bg-plum-900 text-white text-xs font-semibold hover:bg-plum-800 transition-colors"
+              className="px-4 py-2 rounded-full bg-plum-950 text-white text-xs font-semibold hover:bg-plum-850 transition-colors shadow-sm"
             >
-              Request Pilot
+              Request a Pilot
             </button>
             <button
               ref={toggleButtonRef}
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-xl text-plum-800 hover:text-plum-950 hover:bg-sage-100 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800"
+              className="p-2 rounded-xl text-plum-900 hover:bg-sage-100 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800"
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu-drawer"
               aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -138,28 +129,25 @@ export function Header({ onOpenPilotModal }) {
         </div>
       </div>
 
-      {/* Accessible Mobile Menu Drawer */}
+      {/* Mobile Drawer (Clean - without "In development") */}
       {isMobileMenuOpen && (
         <div
           id="mobile-menu-drawer"
           ref={mobileMenuRef}
-          className="lg:hidden fixed inset-x-0 top-[65px] bg-[#FAF8F5] border-b border-sage-200 shadow-modal px-6 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200"
+          className="lg:hidden fixed inset-x-0 top-[69px] bg-[#FAF8F5]/98 backdrop-blur-2xl border-b border-sage-200 shadow-modal px-6 py-6 space-y-4 animate-in slide-in-from-top-3 duration-200"
         >
-          <div className="flex items-center justify-between pb-3 border-b border-sage-200/60">
-            <span className="text-xs uppercase tracking-wider font-semibold text-plum-600">
-              Site Navigation
-            </span>
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-sage-100 text-sage-800 border border-sage-200">
-              In development
+          <div className="pb-2 border-b border-sage-200/60">
+            <span className="text-[11px] uppercase tracking-wider font-semibold text-plum-500">
+              Navigation
             </span>
           </div>
-          <nav className="flex flex-col space-y-3" aria-label="Mobile Navigation">
+          <nav className="flex flex-col space-y-1.5" aria-label="Mobile Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                onClick={handleNavLinkClick}
-                className="text-base font-medium text-plum-900 hover:text-plum-700 hover:bg-sage-50 rounded-xl px-3 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-base font-medium text-plum-900 hover:text-plum-700 hover:bg-sage-50 rounded-xl px-3 py-2.5 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800"
               >
                 {link.label}
               </a>
@@ -172,9 +160,10 @@ export function Header({ onOpenPilotModal }) {
                 setIsMobileMenuOpen(false);
                 onOpenPilotModal(e.currentTarget);
               }}
-              className="w-full py-3 rounded-full bg-plum-900 text-white text-sm font-semibold hover:bg-plum-800 transition-colors text-center shadow-sm"
+              className="w-full py-3 rounded-full bg-plum-950 text-white text-sm font-semibold hover:bg-plum-850 transition-colors text-center shadow-sm flex items-center justify-center gap-2"
             >
-              Request a Pilot
+              <span>Request a Pilot</span>
+              <ArrowUpRight className="w-4 h-4 text-champagne-300" />
             </button>
           </div>
         </div>

@@ -7,7 +7,7 @@ import React from 'react';
  */
 export function HairPrintKitIllustration({ className = "" }) {
   return (
-    <div className={`relative rounded-3xl bg-gradient-to-br from-[#FAF7F2] to-[#EAEFE9] p-6 sm:p-8 border border-sage-200/70 shadow-soft overflow-hidden group ${className}`}>
+    <div className={`relative rounded-3xl bg-gradient-to-br from-[#FAF7F2] to-[#EAEFE9] p-6 sm:p-8 border border-sage-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden group ${className}`}>
       {/* Decorative ambient background rings */}
       <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-champagne-100/40 blur-2xl pointer-events-none" />
       <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-sage-100/60 blur-2xl pointer-events-none" />
@@ -122,7 +122,7 @@ export function HairPrintKitIllustration({ className = "" }) {
  */
 export function ScalpCapModelIllustration({ className = "" }) {
   return (
-    <div className={`relative rounded-3xl bg-gradient-to-br from-[#FAF7F2] to-[#EAEFE9] p-6 sm:p-8 border border-sage-200/70 shadow-soft overflow-hidden group ${className}`}>
+    <div className={`relative rounded-3xl bg-gradient-to-br from-[#FAF7F2] to-[#EAEFE9] p-6 sm:p-8 border border-sage-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden group ${className}`}>
       {/* Decorative ambient background rings */}
       <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-sage-100/60 blur-2xl pointer-events-none" />
       <div className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-champagne-100/40 blur-2xl pointer-events-none" />

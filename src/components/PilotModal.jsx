@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, CheckCircle2, AlertCircle, ShieldCheck, Loader2 } from 'lucide-react';
+import { X, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { savePilotSubmission } from '../utils/storage';
 
 export function PilotModal({ isOpen, onClose, triggerRef }) {
@@ -19,13 +19,11 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
   const closeButtonRef = useRef(null);
   const firstInputRef = useRef(null);
 
-  // Lock background scroll when modal is open
   useEffect(() => {
     if (isOpen) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
 
-      // Focus first input or close button
       const timer = setTimeout(() => {
         if (firstInputRef.current) {
           firstInputRef.current.focus();
@@ -37,7 +35,6 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
       return () => {
         document.body.style.overflow = originalOverflow;
         clearTimeout(timer);
-        // Restore focus to trigger element when closing
         if (triggerRef && triggerRef.current) {
           triggerRef.current.focus();
         }
@@ -92,12 +89,10 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
   }
 
   function validateEmail(email) {
-    // Standard robust email validation regex
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
   }
 
   function validatePhone(phone) {
-    // Accept international formatting (+, spaces, dashes, brackets, digits, min 7 digits)
     const digitsOnly = phone.replace(/\D/g, '');
     return digitsOnly.length >= 7 && digitsOnly.length <= 16;
   }
@@ -106,7 +101,6 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
 
-    // Clear specific error as user types
     if (fieldErrors[name]) {
       setFieldErrors(prev => {
         const updated = { ...prev };
@@ -142,7 +136,7 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
     if (!trimmedEmail) {
       errors.emailAddress = 'Email Address is required.';
     } else if (!validateEmail(trimmedEmail)) {
-      errors.emailAddress = 'Please enter a valid email address (e.g. name@example.com).';
+      errors.emailAddress = 'Please enter a valid email address (e.g. name@domain.com).';
     }
 
     if (!trimmedOrg) {
@@ -157,7 +151,6 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
     setIsSubmitting(true);
 
     try {
-      // Attempt to save to localStorage
       savePilotSubmission({
         fullName: trimmedName,
         phoneNumber: trimmedPhone,
@@ -165,9 +158,7 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
         organisationName: trimmedOrg
       });
 
-      // Successful save
       setSuccessMessage('Your pilot interest has been saved in this browser. This demo does not send your details to CrownForm.');
-      // Reset form fields only after successful save
       setFormData({
         fullName: '',
         phoneNumber: '',
@@ -176,7 +167,6 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
       });
       setFieldErrors({});
     } catch {
-      // If storage is blocked, full or corrupted, show error and retain the form inputs
       setErrorMessage('We could not save your details in this browser. Your form entries have been kept. Existing saved records have not been replaced.');
     } finally {
       setIsSubmitting(false);
@@ -187,7 +177,7 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-plum-950/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-plum-950/70 backdrop-blur-md"
       role="dialog"
       aria-modal="true"
       aria-labelledby="pilot-modal-title"
@@ -198,16 +188,16 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-xl rounded-3xl bg-[#FAF8F5] border border-sage-200/80 shadow-modal overflow-hidden animate-in fade-in zoom-in-95 duration-200 my-8"
+        className="relative w-full max-w-lg rounded-3xl bg-[#FAF8F5] border border-sage-200/90 shadow-modal overflow-hidden animate-in fade-in zoom-in-95 duration-200 my-8"
       >
         {/* Modal Header */}
-        <div className="flex items-start justify-between px-6 pt-6 pb-4 sm:px-8 border-b border-sage-200/60 bg-[#FAF8F5]">
+        <div className="flex items-start justify-between px-7 pt-7 pb-5 sm:px-9 border-b border-sage-200/70 bg-[#FAF8F5]">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-champagne-100 text-champagne-800 border border-champagne-300 mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-champagne-100 text-champagne-800 border border-champagne-300 mb-2">
               <span className="w-1.5 h-1.5 rounded-full bg-champagne-600 animate-pulse" />
               Pilot Programme Registration
             </div>
-            <h2 id="pilot-modal-title" className="text-2xl sm:text-3xl font-serif font-bold text-plum-900 tracking-tight">
+            <h2 id="pilot-modal-title" className="text-2xl sm:text-3xl font-serif font-bold text-plum-950 tracking-tight">
               Request a Pilot
             </h2>
             <p id="pilot-modal-description" className="mt-1 text-sm text-plum-700">
@@ -218,23 +208,15 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
             ref={closeButtonRef}
             type="button"
             onClick={handleClose}
-            className="p-2 rounded-full text-plum-600 hover:text-plum-900 hover:bg-sage-100 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800"
+            className="p-2 rounded-full text-plum-600 hover:text-plum-950 hover:bg-sage-100 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800"
             aria-label="Close Request a Pilot modal"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Notice Before Submission */}
-        <div className="px-6 sm:px-8 py-3.5 bg-sage-50/80 border-b border-sage-200/50 flex items-start gap-3">
-          <ShieldCheck className="w-5 h-5 text-sage-700 shrink-0 mt-0.5" aria-hidden="true" />
-          <p className="text-xs sm:text-sm text-sage-900 leading-relaxed font-medium">
-            Demo form: your details are saved only in this browser on this device. They are not sent to CrownForm.
-          </p>
-        </div>
-
-        {/* Form Body */}
-        <form onSubmit={handleSubmit} noValidate className="p-6 sm:p-8 space-y-5">
+        {/* Clean Form Body (No demo notice banner; no pre-filled text in inputs) */}
+        <form onSubmit={handleSubmit} noValidate className="p-7 sm:p-9 space-y-5">
           {/* Accessible announcements */}
           <div aria-live="polite" className="space-y-3">
             {successMessage && (
@@ -265,7 +247,7 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
 
           {/* Full Name */}
           <div>
-            <label htmlFor="fullName" className="block text-sm font-semibold text-plum-900 mb-1.5">
+            <label htmlFor="fullName" className="block text-sm font-semibold text-plum-950 mb-1.5">
               Full Name <span className="text-red-600" aria-hidden="true">*</span>
             </label>
             <input
@@ -280,12 +262,11 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
               aria-required="true"
               aria-invalid={Boolean(fieldErrors.fullName)}
               aria-describedby={fieldErrors.fullName ? "fullName-error" : undefined}
-              className={`w-full px-4 py-3 rounded-xl border text-plum-900 placeholder-plum-400 bg-white shadow-sm focus:outline-none focus:ring-2 transition-all ${
+              className={`w-full px-4 py-3 rounded-xl border text-plum-950 bg-white shadow-sm focus:outline-none focus:ring-2 transition-all ${
                 fieldErrors.fullName
                   ? 'border-red-500 focus:ring-red-400 bg-red-50/20'
                   : 'border-sage-200 focus:border-plum-700 focus:ring-plum-700/20'
               }`}
-              placeholder="e.g. Eleanor Vance"
             />
             {fieldErrors.fullName && (
               <p id="fullName-error" className="mt-1.5 text-xs text-red-600 font-medium flex items-center gap-1">
@@ -297,7 +278,7 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
 
           {/* Phone Number */}
           <div>
-            <label htmlFor="phoneNumber" className="block text-sm font-semibold text-plum-900 mb-1.5">
+            <label htmlFor="phoneNumber" className="block text-sm font-semibold text-plum-950 mb-1.5">
               Phone Number <span className="text-red-600" aria-hidden="true">*</span>
             </label>
             <input
@@ -311,12 +292,11 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
               aria-required="true"
               aria-invalid={Boolean(fieldErrors.phoneNumber)}
               aria-describedby={fieldErrors.phoneNumber ? "phoneNumber-error" : "phoneNumber-hint"}
-              className={`w-full px-4 py-3 rounded-xl border text-plum-900 placeholder-plum-400 bg-white shadow-sm focus:outline-none focus:ring-2 transition-all ${
+              className={`w-full px-4 py-3 rounded-xl border text-plum-950 bg-white shadow-sm focus:outline-none focus:ring-2 transition-all ${
                 fieldErrors.phoneNumber
                   ? 'border-red-500 focus:ring-red-400 bg-red-50/20'
                   : 'border-sage-200 focus:border-plum-700 focus:ring-plum-700/20'
               }`}
-              placeholder="+44 7700 900123"
             />
             <p id="phoneNumber-hint" className="mt-1 text-xs text-plum-600">
               Stored as text. Accepts UK and international standard formats.
@@ -331,7 +311,7 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
 
           {/* Email Address */}
           <div>
-            <label htmlFor="emailAddress" className="block text-sm font-semibold text-plum-900 mb-1.5">
+            <label htmlFor="emailAddress" className="block text-sm font-semibold text-plum-950 mb-1.5">
               Email Address <span className="text-red-600" aria-hidden="true">*</span>
             </label>
             <input
@@ -345,12 +325,11 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
               aria-required="true"
               aria-invalid={Boolean(fieldErrors.emailAddress)}
               aria-describedby={fieldErrors.emailAddress ? "emailAddress-error" : undefined}
-              className={`w-full px-4 py-3 rounded-xl border text-plum-900 placeholder-plum-400 bg-white shadow-sm focus:outline-none focus:ring-2 transition-all ${
+              className={`w-full px-4 py-3 rounded-xl border text-plum-950 bg-white shadow-sm focus:outline-none focus:ring-2 transition-all ${
                 fieldErrors.emailAddress
                   ? 'border-red-500 focus:ring-red-400 bg-red-50/20'
                   : 'border-sage-200 focus:border-plum-700 focus:ring-plum-700/20'
               }`}
-              placeholder="eleanor@example.co.uk"
             />
             {fieldErrors.emailAddress && (
               <p id="emailAddress-error" className="mt-1.5 text-xs text-red-600 font-medium flex items-center gap-1">
@@ -362,7 +341,7 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
 
           {/* Organisation Name */}
           <div>
-            <label htmlFor="organisationName" className="block text-sm font-semibold text-plum-900 mb-1.5">
+            <label htmlFor="organisationName" className="block text-sm font-semibold text-plum-950 mb-1.5">
               Organisation Name <span className="text-red-600" aria-hidden="true">*</span>
             </label>
             <input
@@ -376,12 +355,11 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
               aria-required="true"
               aria-invalid={Boolean(fieldErrors.organisationName)}
               aria-describedby="organisationName-hint organisationName-error"
-              className={`w-full px-4 py-3 rounded-xl border text-plum-900 placeholder-plum-400 bg-white shadow-sm focus:outline-none focus:ring-2 transition-all ${
+              className={`w-full px-4 py-3 rounded-xl border text-plum-950 bg-white shadow-sm focus:outline-none focus:ring-2 transition-all ${
                 fieldErrors.organisationName
                   ? 'border-red-500 focus:ring-red-400 bg-red-50/20'
                   : 'border-sage-200 focus:border-plum-700 focus:ring-plum-700/20'
               }`}
-              placeholder="e.g. Individual or Studio Name"
             />
             <p id="organisationName-hint" className="mt-1 text-xs text-plum-600">
               If you are enquiring as an individual, enter ‘Individual’.
@@ -395,7 +373,7 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
           </div>
 
           {/* Actions */}
-          <div className="pt-3 flex flex-col-reverse sm:flex-row items-center justify-end gap-3 border-t border-sage-200/60">
+          <div className="pt-4 flex flex-col-reverse sm:flex-row items-center justify-end gap-3 border-t border-sage-200/60">
             <button
               type="button"
               onClick={handleClose}
@@ -407,7 +385,7 @@ export function PilotModal({ isOpen, onClose, triggerRef }) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-plum-900 text-white text-sm font-semibold hover:bg-plum-800 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-plum-900 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto px-7 py-2.5 rounded-full bg-plum-950 text-white text-sm font-semibold hover:bg-plum-850 active:scale-[0.98] transition-all shadow-sm hover:shadow-card focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-plum-900 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>

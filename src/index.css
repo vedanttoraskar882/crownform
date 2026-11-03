@@ -7,6 +7,7 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -25,17 +26,18 @@
 
   body {
     background-color: #FAF8F5;
-    color: #241824;
+    color: #1F141F;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.01em;
   }
 
-  /* Custom anchor scroll margin for sticky header */
+  /* Section anchor scroll margin for sticky header */
   section[id] {
-    scroll-margin-top: 5.5rem;
+    scroll-margin-top: 6rem;
   }
 }
 
-/* Custom subtle scrollbar */
+/* Custom subtle luxury scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -43,9 +45,23 @@
   background: #FAF8F5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D8E2D7;
-  border-radius: 4px;
+  background: #D6E2D5;
+  border-radius: 9999px;
+  border: 2px solid #FAF8F5;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #BCCDBD;
+  background: #B7CBB6;
+}
+
+/* Glassmorphic luxury panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(214, 226, 213, 0.7);
+}
+
+/* Subtle gradient border */
+.border-gradient-gold {
+  border-image: linear-gradient(to right, #C5A059, #E8DEC4, #C5A059) 1;
 }

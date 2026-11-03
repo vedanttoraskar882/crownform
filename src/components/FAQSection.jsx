@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { faqs } from '../data/faqData';
-import { ChevronDown, HelpCircle, MessageSquareQuote } from 'lucide-react';
+import { ChevronDown, HelpCircle } from 'lucide-react';
 
 export function FAQSection() {
-  // Allow multiple or single open items. Let's support expanding/collapsing individual items.
   const [openIds, setOpenIds] = useState(new Set(['what-is-crownform', 'what-is-hairprint']));
 
   function toggleFaq(id) {
@@ -32,11 +31,11 @@ export function FAQSection() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-sage-100 text-sage-800 border border-sage-300">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-sage-100 text-sage-800 border border-sage-300">
               <HelpCircle className="w-3.5 h-3.5" />
               <span>Questions &amp; Guidance</span>
             </div>
-            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-plum-950 tracking-tight">
+            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-[42px] font-serif font-bold text-plum-950 tracking-tight leading-[1.18]">
               Frequently Asked Questions
             </h2>
             <p className="mt-3 text-base text-plum-700 leading-relaxed max-w-2xl">
@@ -48,14 +47,14 @@ export function FAQSection() {
             <button
               type="button"
               onClick={expandAll}
-              className="text-xs font-semibold text-plum-700 hover:text-plum-950 px-3 py-1.5 rounded-lg border border-sage-300 bg-white hover:bg-sage-50 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800"
+              className="text-xs font-semibold text-plum-800 hover:text-plum-950 px-3.5 py-2 rounded-xl border border-sage-300 bg-white hover:bg-sage-50 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800 shadow-sm"
             >
               Expand All
             </button>
             <button
               type="button"
               onClick={collapseAll}
-              className="text-xs font-semibold text-plum-700 hover:text-plum-950 px-3 py-1.5 rounded-lg border border-sage-300 bg-white hover:bg-sage-50 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800"
+              className="text-xs font-semibold text-plum-800 hover:text-plum-950 px-3.5 py-2 rounded-xl border border-sage-300 bg-white hover:bg-sage-50 transition-colors focus:outline-none focus:ring-2 focus:ring-plum-800 shadow-sm"
             >
               Collapse All
             </button>
@@ -72,7 +71,7 @@ export function FAQSection() {
             return (
               <div
                 key={faq.id}
-                className="rounded-2xl bg-white border border-sage-200/80 shadow-soft overflow-hidden transition-colors"
+                className="rounded-2xl bg-white border border-sage-200/80 shadow-soft hover:shadow-card transition-all overflow-hidden"
               >
                 <h3>
                   <button
@@ -83,7 +82,7 @@ export function FAQSection() {
                     onClick={() => toggleFaq(faq.id)}
                     className="w-full px-6 py-5 sm:px-8 text-left flex items-center justify-between gap-4 hover:bg-sage-50/50 transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-plum-800"
                   >
-                    <span className="flex items-center gap-3">
+                    <span className="flex items-center gap-3.5">
                       <span className="text-xs font-mono font-bold text-champagne-700 w-6">
                         {String(index + 1).padStart(2, '0')}
                       </span>
@@ -92,7 +91,7 @@ export function FAQSection() {
                       </span>
                     </span>
                     <span
-                      className={`p-1.5 rounded-full bg-sage-100 text-plum-800 shrink-0 transition-transform duration-200 ${
+                      className={`p-2 rounded-full bg-sage-100 text-plum-800 shrink-0 transition-transform duration-200 ${
                         isOpen ? 'rotate-180 bg-champagne-100 text-champagne-800' : ''
                       }`}
                       aria-hidden="true"

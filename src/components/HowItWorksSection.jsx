@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, ShieldAlert, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Clock, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export function HowItWorksSection({ onOpenPilotModal }) {
   const steps = [
@@ -46,10 +46,10 @@ export function HowItWorksSection({ onOpenPilotModal }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-sage-100 text-sage-800 border border-sage-300">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-sage-100 text-sage-800 border border-sage-300">
             The Patient Pathway
           </div>
-          <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-plum-950 tracking-tight">
+          <h2 className="mt-3 text-3xl sm:text-4xl lg:text-[42px] font-serif font-bold text-plum-950 tracking-tight leading-[1.18]">
             How It Works
           </h2>
           <p className="mt-4 text-base sm:text-lg text-plum-700 leading-relaxed">
@@ -62,30 +62,30 @@ export function HowItWorksSection({ onOpenPilotModal }) {
           {steps.map((item) => (
             <div
               key={item.step}
-              className="relative p-7 sm:p-8 rounded-3xl bg-white border border-sage-200/80 shadow-soft flex flex-col justify-between group hover:border-sage-400 transition-colors"
+              className="relative p-8 rounded-3xl bg-white border border-sage-200/80 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5 flex flex-col justify-between group"
             >
               <div>
-                <div className="flex items-center justify-between mb-5">
-                  <span className="w-10 h-10 rounded-2xl bg-champagne-100 border border-champagne-200 text-champagne-800 font-serif font-bold text-lg flex items-center justify-center">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="w-10 h-10 rounded-2xl bg-champagne-100 border border-champagne-200 text-champagne-800 font-serif font-bold text-lg flex items-center justify-center shadow-sm">
                     {item.step}
                   </span>
-                  <span className="text-[11px] font-semibold tracking-wide uppercase text-plum-500">
+                  <span className="text-[11px] font-semibold tracking-wider uppercase text-plum-500">
                     Step {item.step} of 6
                   </span>
                 </div>
 
-                <h3 className="text-xl font-serif font-bold text-plum-950">
+                <h3 className="text-xl font-serif font-bold text-plum-950 leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-xs font-semibold text-sage-700 mt-1 mb-3">
+                <p className="text-xs font-semibold text-sage-700 mt-1.5 mb-3.5">
                   {item.summary}
                 </p>
-                <p className="text-xs sm:text-sm text-plum-700 leading-relaxed">
+                <p className="text-xs sm:text-sm text-plum-700 leading-relaxed font-normal">
                   {item.detail}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-sage-100 flex items-center gap-2 text-xs text-plum-500">
+              <div className="mt-6 pt-4 border-t border-sage-100 flex items-center gap-2 text-xs text-plum-500 font-medium">
                 <CheckCircle2 className="w-3.5 h-3.5 text-sage-600" />
                 <span>Planned service protocol</span>
               </div>
@@ -94,14 +94,14 @@ export function HowItWorksSection({ onOpenPilotModal }) {
         </div>
 
         {/* Essential Timing & Bridge Headwear Notice */}
-        <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-white border border-champagne-300/80 shadow-soft">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="mt-14 p-8 sm:p-10 rounded-3xl bg-white border border-champagne-300/90 shadow-card">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             <div className="flex items-start gap-4">
-              <div className="p-3 rounded-2xl bg-champagne-100 text-champagne-800 shrink-0 mt-0.5">
+              <div className="p-3 rounded-2xl bg-champagne-100 text-champagne-800 shrink-0 mt-0.5 shadow-sm">
                 <Clock className="w-6 h-6" aria-hidden="true" />
               </div>
-              <div className="space-y-1.5">
-                <h4 className="text-base sm:text-lg font-serif font-bold text-plum-950">
+              <div className="space-y-2">
+                <h4 className="text-lg sm:text-xl font-serif font-bold text-plum-950">
                   Production Timing &amp; Interim Headwear
                 </h4>
                 <p className="text-xs sm:text-sm text-plum-800 leading-relaxed max-w-3xl">
@@ -116,10 +116,10 @@ export function HowItWorksSection({ onOpenPilotModal }) {
             <button
               type="button"
               onClick={(e) => onOpenPilotModal(e.currentTarget)}
-              className="shrink-0 px-6 py-3 rounded-full bg-plum-900 text-white text-sm font-semibold hover:bg-plum-800 transition-colors shadow-sm flex items-center gap-2"
+              className="shrink-0 px-7 py-3.5 rounded-full bg-plum-950 text-white text-sm font-semibold hover:bg-plum-850 transition-all shadow-sm hover:shadow-card flex items-center gap-2"
             >
               <span>Enquire About Pilot</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-champagne-300" />
             </button>
           </div>
         </div>

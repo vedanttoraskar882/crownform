@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, ShieldCheck, MapPin } from 'lucide-react';
+import { ArrowUp, ShieldCheck, MapPin, ArrowUpRight } from 'lucide-react';
 
 export function Footer({ onOpenPilotModal, onOpenPrivacyModal }) {
   const currentYear = new Date().getFullYear();
@@ -22,18 +22,16 @@ export function Footer({ onOpenPilotModal, onOpenPrivacyModal }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 items-start">
-          {/* Brand & Mission Statement */}
+          {/* Brand & Overview */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
-              <span className="text-2xl font-serif font-bold text-white tracking-tight">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl sm:text-[26px] font-serif font-bold text-white tracking-tight">
                 CrownForm
               </span>
-              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-plum-800 text-champagne-300 border border-plum-700">
-                In development
-              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-champagne-400 mb-1" />
             </div>
 
-            <p className="text-sm text-plum-200 leading-relaxed max-w-sm">
+            <p className="text-sm text-plum-200/90 leading-relaxed max-w-sm font-normal">
               A personalised hair-prosthesis service connecting calibrated HairPrint capture, custom cap design, specialist craftsmanship and ongoing care.
             </p>
 
@@ -73,23 +71,20 @@ export function Footer({ onOpenPilotModal, onOpenPrivacyModal }) {
               <button
                 type="button"
                 onClick={(e) => onOpenPilotModal(e.currentTarget)}
-                className="w-full py-2.5 px-5 rounded-full bg-champagne-500 text-plum-950 font-semibold text-sm hover:bg-champagne-400 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-plum-950 focus:ring-champagne-400"
+                className="w-full py-3 px-5 rounded-full bg-champagne-500 text-plum-950 font-semibold text-sm hover:bg-champagne-400 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-plum-950 focus:ring-champagne-400 flex items-center justify-center gap-2"
               >
-                Request a Pilot
+                <span>Request a Pilot</span>
+                <ArrowUpRight className="w-4 h-4 text-plum-950" />
               </button>
             </div>
           </div>
         </div>
 
-        {/* Development Stage Notice & Privacy Disclosure Button */}
-        <div className="mt-12 pt-8 border-t border-plum-900/80 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-plum-400">
+        {/* Clean Bottom Bar (Without "In development" or "Development-stage business") */}
+        <div className="mt-14 pt-8 border-t border-plum-900/80 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-plum-400">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <span>
               &copy; {currentYear} CrownForm Ltd. All rights reserved.
-            </span>
-            <span className="hidden sm:inline text-plum-700">&bull;</span>
-            <span className="text-plum-300">
-              Development-stage business &bull; Non-commercial demo website
             </span>
             <span className="hidden sm:inline text-plum-700">&bull;</span>
             <button
@@ -105,7 +100,7 @@ export function Footer({ onOpenPilotModal, onOpenPrivacyModal }) {
           <button
             type="button"
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-plum-300 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-champagne-300 rounded p-1"
+            className="flex items-center gap-1.5 text-plum-300 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-champagne-300 rounded p-1 font-medium"
             aria-label="Scroll back to top of page"
           >
             <span>Back to top</span>
