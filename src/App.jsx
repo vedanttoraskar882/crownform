@@ -41,7 +41,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-plum-900 selection:bg-sage-200 selection:text-plum-950 font-sans">
+    <div className="min-h-screen flex flex-col bg-transparent text-plum-900 selection:bg-emerald-200 selection:text-emerald-950 font-sans">
       {/* Sticky Navigation Header */}
       <Header onOpenPilotModal={handleOpenPilotModal} />
 
